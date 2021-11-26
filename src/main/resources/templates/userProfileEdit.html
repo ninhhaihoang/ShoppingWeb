@@ -1,0 +1,297 @@
+<html lang="vi">
+
+<head>
+    <!-- include head.html -->
+    <title>Edit Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<!-- favicon -->
+<link href="../images/favicon.ico" type="image/x-icon" rel="icon">
+<!-- meta social -->
+<meta name="twitter:card" content="" />
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="" />
+<meta property="og:site_name" content="">
+<meta property="og:title" content="" />
+<meta property="og:type" content="">
+<meta property="og:url" content="" />
+<link rel="apple-touch-icon" sizes="180x180" href="/../images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/../images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/../images/favicon/favicon-16x16.png">
+
+<link rel="manifest" href="/manifest.json">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Short name web app">
+<meta name="apple-mobile-web-app-title" content="Short name web app">
+<meta name="theme-color" content="#00a849">
+<meta name="msapplication-navbutton-color" content="#00a849">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="msapplication-starturl" content="/">
+
+
+    <!-- include styles.html -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono|Roboto+Slab&display=swap"
+    rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+<!-- boostrap -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" -->
+    <!-- integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"> -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- build:css(.tmp) style/style.min.css -->
+<link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+<!-- endbuild -->
+</head>
+
+<body class="wrapper">
+    <header class="main_header">
+  <div class="container_header">
+    <ul class="nav_list" id="nav_active">
+      <li class="nav_list_item active"> <a href="#" class="nav_list_item--link"> Trang chủ </a> </li>
+      <li class="nav_list_item"><a href="#"  class="nav_list_item--link"> Giới thiệu </a> </li>
+      <li class="nav_list_item"> <a href="#" class="nav_list_item--link"> Sản phẩm </a> </li>
+    </ul>
+    <ul class="nav_list_right" >
+      <li class="nav_list_right_item active"> <a href="#" class="nav_list_right_item--link"> Đăng nhập </a> </li>
+      <li class="nav_list_right_item"><a href="#"  class="nav_list_right_item--link"> Đăng kí </a> </li>
+    </ul>
+  </div>
+</header>
+
+    <section class="wrapper_a">
+        <div class="containers">
+            
+            <div class="logo">
+                <img src="../images/logo.png" alt="">
+            </div>
+            <div class="box_center">
+                <ul class="trending_list" id="trend_active">
+                    <li class="trending_list_item active2"> <a href="#" class="trending_list_item--link"> Xu hướng tìm
+                            kiếm</a>
+                    </li>
+                    <li class="trending_list_item"> <a href="#" class="trending_list_item--link"> Hodie </a></li>
+                    <li class="trending_list_item"> <a href="#" class="trending_list_item--link">Áo khoác jean</a> </li>
+                    <li class="trending_list_item"> <a href="#" class="trending_list_item--link"> Áo thun </a> </li>
+                </ul>
+                <div class="comboBox">
+                    <div class="search_form">
+                        <input id="input_search" type="text" placeholder="Tìm kiếm...">
+                        <button class="btn btn_search"> <img src="../images/icons/loupe.png" alt=""> </button>
+                    </div>
+                    <div class="buy">
+                        <a href="#" class="control_buy"> <img src="../images/icons/buy.png" alt=""> </a>
+                        <span class="count"> 0 </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 id="tag_profile"> Chỉnh sửa hồ sơ </h1>
+    </section>
+
+    <section class="wrapper_editProfile">
+        <div class="containers">
+            <div class="box_left">
+                <div class="thumb">
+                    <img src="https://scontent.fdad1-2.fna.fbcdn.net/v/t1.6435-9/135595082_2754230398132098_1378096824955109440_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=o7OFL3mDhYUAX9KR_c9&_nc_ht=scontent.fdad1-2.fna&oh=fdcb5d918b40b022c0a3d8a7adb85e46&oe=61B5E0A1"
+                        alt="">
+                </div>
+                <div class="avatar_control">
+                    <button id="changeAvatar"> <span> Thay đổi ảnh đại diện </span></button>
+                </div>
+            </div>
+           
+            <div class="box_right">
+               
+                <div class="detail_profile">
+                    <ul class="list_about_you">
+                        <li class="list_about_you_item"> 
+                            <p class="first_child"> Tên: </p>    
+                            <input id="editName" type="text" value="Nguyễn Thành Vinh">
+                        </li>
+                        <li class="list_about_you_item"> 
+                            <p class="first_child"> Tên đăng nhập: </p>  
+                            <input id="editLoginName" type="text" value="shoppingonline123">     
+                        </li>
+                        <li class="list_about_you_item"> 
+                            <p class="first_child"> Giới tính: </p>
+                            <label class="choose_sex" for="male" > Nam </label>    
+                            <input id="male" name="sex" type="radio" value="Nam" checked>
+                            <label class="choose_sex" for="female"> Nữ </label>    
+                            <input  id="female" name="sex" type="radio" value="Nữ">
+                        </li>
+                        <li class="list_about_you_item">    
+                            <p class="first_child"> Ngày sinh: </p>  
+                            <input type="date" id="birthday" name="birthday">  
+                        </li>
+                        <li class="list_about_you_item"> 
+                            <p class="first_child"> Điện thoại: </p>    
+                            <input id="editPhone" type="text" value="039 798 7979">
+                        </li>
+                        <li class="list_about_you_item"> 
+                            <p class="first_child"> Email: </p>    
+                            <input id="editEmail" type="text" value="nthanhvinh@gmail.com">    
+                        </li>
+                        <li class="list_about_you_item"> 
+                            <p class="first_child"> Liên kết tài khoản: </p>    
+                            <ul class="list_connect">
+                                <li class="list_connect_item">  
+                                    <a href="#" class="list_connect_item--link"> <img src="../images/icons/facebook-logo.png" alt=""></a>
+                                </li>
+                                <li class="list_connect_item">  
+                                    <a href="#" class="list_connect_item--link"> <img src="../images/icons/instagram.png" alt=""></a>
+                                </li>
+                                <li class="list_connect_item">  
+                                    <a href="#" class="list_connect_item--link"> <img src="../images/icons/twitter.png" alt=""></a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <button class="btn" id="btn_accept" type="submit"> <span> Xác Nhận </span> </button>
+                <button class="btn" id="btn_cancel" type="button"> <span> Hủy Bỏ </span> </button>
+            </div>
+       
+
+        </div>
+    </section>
+
+    <section class="wrapper_f">
+        <div class="containers">
+          <div class="wrapper_f_grid">
+            <div class="wrapper_f_grid_item">
+              <div class="wrapper_f_grid_item_content">
+                <div class="logo_footer">
+                    <div class="logo"></div>
+                </div>
+                <ul class="contact_list">
+                  <li class="contact_list_item"> 
+                    <div class="contact_logo_icon "></div>
+                    <p> 65 Triệu Quốc Đạt - Hòa Thọ Đông - <br>
+                      Cẩm Lệ - Đà Nẵng </p>
+                  </li>
+                  <li class="contact_list_item"> 
+                    <div class="contact_logo_icon icon2"></div>
+                    <p> 0869 90 60 70 </p>
+                  </li>
+                  <li class="contact_list_item"> 
+                    <div class="contact_logo_icon icon3"></div>
+                    <p> oliviashop@gmail.com </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="wrapper_f_grid_item">
+              <div class="wrapper_f_grid_item_content">
+                <div class="heading">
+                    <h4> giới thiệu </h4>
+                </div>
+                <ul class="contact_list">
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Về chúng tôi </p> </a> 
+                  </li>
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Dịch vụ ưu đãi </p> </a> 
+                  </li>
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Thông tin sản phẩm </p> </a> 
+                  </li>
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Đội ngũ  nhân viên </p> </a> 
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="wrapper_f_grid_item">
+              <div class="wrapper_f_grid_item_content">
+                <div class="heading">
+                    <h4> chính sách </h4>
+                </div>
+                <ul class="contact_list">
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p>Quyền riêng tư</p> </a> 
+                  </li>
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Sử dụng dịch vụ </p> </a> 
+                  </li>
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Góp ý-khiếu nại </p> </a> 
+                  </li>
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Nội dung trang web </p> </a> 
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="wrapper_f_grid_item">
+              <div class="wrapper_f_grid_item_content">
+                <div class="heading">
+                    <h4> hỗ trợ </h4>
+                </div>
+                <ul class="contact_list">
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Đặt hàng Online </p> </a> 
+                  </li>
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Đổi trả sản phẩm </p> </a> 
+                  </li>
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Thanh toán Online </p> </a> 
+                  </li>
+                  <li class="contact_list_item"> 
+                    <a href="#" class="contact_list_item--link"> <p> Bảo hành sản phẩm </p> </a> 
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+<footer class="main_footer">
+        <div class="wrapper_footer">
+                <span>© Copyright  2021 </span>
+                <p>Website được phát triển bởi <span style="color:#548ffd";> VinhTN </span> </p>
+        </div>
+</footer>
+
+    <!-- include scripts.html -->
+    <!-- boostrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- build:js script/script.min.js -->
+<script type="text/javascript" src="../js/slick.js"></script>
+    <script type="text/javascript" src="../js/script.js"></script>
+<!-- endbuild -->
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+
+</html>

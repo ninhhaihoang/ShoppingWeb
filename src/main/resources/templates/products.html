@@ -1,0 +1,292 @@
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <title>Fashion Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono|Roboto+Slab&display=swap"
+          th:href="@{https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono|Roboto+Slab&display=swap}"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"
+          rel="stylesheet">
+
+
+    <!-- boostrap -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          th:href="@{https://use.fontawesome.com/releases/v5.8.2/css/all.css}"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"
+          th:href="@{https://unpkg.com/swiper/swiper-bundle.css}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"
+          th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"
+          th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/main.css" th:href="@{/css/main.css}"/>
+</head>
+
+<body class="wrapper">
+<header class="main_header">
+    <div class="container_header">
+        <ul class="nav_list" id="nav_active">
+            <li class="nav_list_item"> <a a th:href="@{/}" class="nav_list_item--link"> Trang chủ </a> </li>
+            <li class="nav_list_item"><a href="#"  class="nav_list_item--link"> Giới thiệu </a> </li>
+            <li class="nav_list_item active"> <a th:href="@{/products/all}" class="nav_list_item--link"> Sản phẩm </a> </li>
+        </ul>
+        <ul class="nav_list_right" sec:authorize="isAnonymous()">
+            <li class="nav_list_right_item active"> <a th:href="@{/login_page}" class="nav_list_right_item--link"> Đăng nhập </a> </li>
+            <li class="nav_list_right_item"><a th:href="@{/register_page}"  class="nav_list_right_item--link"> Đăng kí </a> </li>
+        </ul>
+        <ul class="nav_list_right" sec:authorize="isAuthenticated()">
+            <li class="nav_list_right_item active">
+                <a th:href="@{/profilePage}" class="nav_list_right_item--link">
+                    <span sec:authentication="name"></span>
+                </a>
+            </li>
+            <li class="nav_list_right_item"> <a th:href="@{/j_spring_security_logout}" class="nav_list_right_item--link"> Đăng xuất </a> </li>
+        </ul>
+    </div>
+</header>
+
+<section class="wrapper_a">
+    <div class="containers">
+        <div class="logo">
+            <img src="../static/images/logo.png" th:src="@{/images/logo.png}" alt="">
+        </div>
+        <div class="box_center">
+            <ul class="trending_list" id="trend_active">
+                <li class="trending_list_item active2"><a href="#" class="trending_list_item--link"> Xu hướng tìm
+                    kiếm</a>
+                </li>
+                <li class="trending_list_item"><a href="#" class="trending_list_item--link"> Hodie </a></li>
+                <li class="trending_list_item"><a href="#" class="trending_list_item--link">Áo khoác jean</a></li>
+                <li class="trending_list_item"><a href="#" class="trending_list_item--link"> Áo thun </a></li>
+            </ul>
+            <div class="comboBox">
+                <div class="search_form">
+                    <input id="input_search" type="text" placeholder="Tìm kiếm...">
+                    <button class="btn btn_search">
+                        <img src="../static/images/icons/loupe.png" th:src="@{/images/icons/loupe.png}" alt="">
+                    </button>
+                </div>
+                <div class="buy">
+                    <a th:href="@{/cart}" class="control_buy">
+                        <img src="../static/images/icons/buy.png"  th:src="@{/images/icons/buy.png}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="wrapper_b">
+    <div class="containers">
+        <div class="slideshow_banner">
+            <div class="slideshow_item">
+                <div class="banner">
+                    <img src="../static/images/banner1.jpg" th:src="@{/images/banner1.jpg}" class="banner-img " alt="">
+                </div>
+            </div>
+            <div class="slideshow_item">
+                <div class="banner">
+                    <img src="../static/images/banner2.jpg" th:src="@{/images/banner2.jpg}" class="banner-img " alt="">
+                </div>
+            </div>
+            <div class="slideshow_item">
+                <div class="banner">
+                    <img src="../static/images/banner3.jpg" th:src="@{/images/banner3.jpg}" class="banner-img " alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper_c">
+    <div class="containers">
+        <div class="grids">
+            <div class="left_nav">
+                <ul class="dropdown_menu">
+                    <li class="dropdown_menu_item active">
+                        <div class="left_nav_icon "></div>
+                        Danh mục sản phẩm
+                    </li>
+                    <li class="dropdown_menu_item">
+                        <a href="#" class="dropdown_menu_item--link hidden"> Áo</a>
+                        <input type="checkbox" id="show-List1">
+                        <label for="show-List1"> Áo</label>
+                        <ul class="more_list">
+                            <li><a href="#">ST about Áo  </a></li>
+                            <li><a href="#">ST about Áo  </a></li>
+                            <li><a href="#">ST about Áo  </a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown_menu_item">
+                        <a href="#" class="dropdown_menu_item--link hidden"> Quần </a>
+                        <input type="checkbox" id="show-List2">
+                        <label for="show-List2"> Quần</label>
+                        <ul class="more_list">
+                            <li><a href="#"> ST about Quần </a></li>
+                            <li><a href="#"> ST about Quần </a></li>
+                            <li><a href="#"> ST about Quần </a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown_menu_item">
+                        <a href="#" class="dropdown_menu_item--link "> Sản phẩm nổi bật </a>
+                    </li>
+                    <li class="dropdown_menu_item">
+                        <a href="#" class="dropdown_menu_item--link "> Sản phẩm mới </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_side">
+                <div class="category1">
+                    <div class="list_product" >
+                        <div class="list_product_grid" th:each="p:${products}">
+                            <div class="list_product_grid_item">
+                                <a th:href="@{'/products/' + ${p.productId}}" class="control_product">
+                                    <img th:src="@{${p.mainPicPath}}" alt="">
+                                    <div class="price">
+                                        <p class="name_product" th:text="${p.productName}"> T-Shirt </p>
+                                        <span class="price_product" th:text="${p.productPrice}"> 120.000đ</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrapper_f">
+    <div class="containers">
+        <div class="wrapper_f_grid">
+            <div class="wrapper_f_grid_item">
+                <div class="wrapper_f_grid_item_content">
+                    <div class="logo_footer">
+                        <div class="logo"></div>
+                    </div>
+                    <ul class="contact_list">
+                        <li class="contact_list_item">
+                            <div class="contact_logo_icon "></div>
+                            <p> 65 Triệu Quốc Đạt - Hòa Thọ Đông - <br>
+                                Cẩm Lệ - Đà Nẵng </p>
+                        </li>
+                        <li class="contact_list_item">
+                            <div class="contact_logo_icon icon2"></div>
+                            <p> 0869 90 60 70 </p>
+                        </li>
+                        <li class="contact_list_item">
+                            <div class="contact_logo_icon icon3"></div>
+                            <p> oliviashop@gmail.com </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wrapper_f_grid_item">
+                <div class="wrapper_f_grid_item_content">
+                    <div class="heading">
+                        <h4> giới thiệu </h4>
+                    </div>
+                    <ul class="contact_list">
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Về chúng tôi </p></a>
+                        </li>
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Dịch vụ ưu đãi </p></a>
+                        </li>
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Thông tin sản phẩm </p></a>
+                        </li>
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Đội ngũ nhân viên </p></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wrapper_f_grid_item">
+                <div class="wrapper_f_grid_item_content">
+                    <div class="heading">
+                        <h4> chính sách </h4>
+                    </div>
+                    <ul class="contact_list">
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p>Quyền riêng tư</p></a>
+                        </li>
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Sử dụng dịch vụ </p></a>
+                        </li>
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Góp ý-khiếu nại </p></a>
+                        </li>
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Nội dung trang web </p></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wrapper_f_grid_item">
+                <div class="wrapper_f_grid_item_content">
+                    <div class="heading">
+                        <h4> hỗ trợ </h4>
+                    </div>
+                    <ul class="contact_list">
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Đặt hàng Online </p></a>
+                        </li>
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Đổi trả sản phẩm </p></a>
+                        </li>
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Thanh toán Online </p></a>
+                        </li>
+                        <li class="contact_list_item">
+                            <a href="#" class="contact_list_item--link"><p> Bảo hành sản phẩm </p></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="main_footer">
+    <div class="wrapper_footer">
+        <span>© Copyright  2021 </span>
+        <p>Website được phát triển bởi <span style="color:#548ffd" ;> VinhTN </span></p>
+    </div>
+</footer>
+
+<!-- include scripts.html -->
+<!-- boostrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+        th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"
+        th:src="@{https://unpkg.com/swiper/swiper-bundle.js}"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"
+        th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
+
+<!-- build:js script/script.min.js -->
+<script type="text/javascript" src="../static/js/slick.js"
+        th:src="@{../js/slick.js}"></script>
+<script type="text/javascript" src="../static/js/script.js"
+        th:src="@{../js/script.js}"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
+</body>
+
+</html>

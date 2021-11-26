@@ -1,0 +1,239 @@
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- include head.html -->
+  <title>Fashion Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+  <!-- include styles.html -->
+  <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          th:href="@{https://use.fontawesome.com/releases/v5.8.2/css/all.css}"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+          crossorigin="anonymous"
+  />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
+  />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"
+        th:href="@{https://unpkg.com/swiper/swiper-bundle.css}"/>
+  <link
+          rel="stylesheet"
+          href="https://unpkg.com/swiper/swiper-bundle.min.css"
+          th:href="@{https://unpkg.com/swiper/swiper-bundle.min.css}"
+  />
+
+  <!-- build:css(.tmp) style/style.min.css -->
+  <link rel="stylesheet" type="text/css" media="screen" href="../static/css/sign-up.css"
+        th:href="@{/css/sign-up.css}"/>
+  <link rel="stylesheet" type="text/css" media="screen" href="../static/css/main.css"
+        th:href="@{/css/main.css}"/>
+
+  <!-- endbuild -->
+</head>
+
+  <body class="wrapper">
+    <header class="main_header">
+      <div class="container_header">
+        <ul class="nav_list" id="nav_active">
+          <li class="nav_list_item active"> <a href="../index.html" class="nav_list_item--link"> Trang chủ </a> </li> <!-- warn! -->
+          <li class="nav_list_item"><a href="#"  class="nav_list_item--link"> Giới thiệu </a> </li>
+          <li class="nav_list_item"> <a href="#" class="nav_list_item--link"> Sản phẩm </a> </li>
+        </ul>
+        <ul class="nav_list_right" >
+          <li class="nav_list_right_item active"> <a th:href="@{/login_page}" class="nav_list_right_item--link"> Đăng nhập </a> </li>
+          <li class="nav_list_right_item"><a th:href="@{/register_page}"  class="nav_list_right_item--link"> Đăng kí </a> </li>
+        </ul>
+      </div>
+    </header>
+    <div class="wrapper_main">
+      <div id="signup-area">        
+        <h2>Đăng kí</h2>          
+        <div id="info">
+          <form th:action="@{/process_register}" method="post" th:object="${user}">
+          <p>Họ và tên *</p>
+          <input type="text" name="name" id="name"  th:field="*{fullName}" required/>
+          <p>Địa chỉ *</p>
+          <input type="text" name="address" id="address" th:field="*{address}" required/>
+          <p>Số điện thoại *</p>
+          <input type="text" name="phonenumber" id="phonenumber" th:field="*{phoneNumber}" required/>
+          <p>Username *</p>
+          <input type="text" name="username" id="email" th:field="*{username}" required/>
+          <p>Password *</p>
+          <input type="password" name="password" id="password" th:field="*{encryptedPassword}" required minlength="3"/> <br />
+          <button type="submit" id="signupb">Đăng ký</button>
+          </form>
+          <div id="another-way">
+            <p>Hoặc đăng nhập bằng</p>
+            <button id="Facebook">Facebook</button>
+            <button id="Google">Google</button>
+          </div>
+        </div>
+      </div>
+      <div id="side-bar">
+        <h3>Bạn đã có tài khoản?</h3>
+        <p>Hãy đăng nhập để có thể tham gia mua hàng và nhận được hỗ trợ!</p>
+        <button id="signupButton">Đăng nhập</button>
+      </div>
+    </div>
+    <section class="wrapper_f">
+      <div class="containers">
+        <div class="wrapper_f_grid">
+          <div class="wrapper_f_grid_item">
+            <div class="wrapper_f_grid_item_content">
+              <div class="logo_footer">
+                <div class="logo"></div>
+              </div>
+              <ul class="contact_list">
+                <li class="contact_list_item">
+                  <div class="contact_logo_icon"></div>
+                  <p>
+                    65 Triệu Quốc Đạt - Hòa Thọ Đông - <br />
+                    Cẩm Lệ - Đà Nẵng
+                  </p>
+                </li>
+                <li class="contact_list_item">
+                  <div class="contact_logo_icon icon2"></div>
+                  <p>0869 90 60 70</p>
+                </li>
+                <li class="contact_list_item">
+                  <div class="contact_logo_icon icon3"></div>
+                  <p>oliviashop@gmail.com</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="wrapper_f_grid_item">
+            <div class="wrapper_f_grid_item_content">
+              <div class="heading">
+                <h4>giới thiệu</h4>
+              </div>
+              <ul class="contact_list">
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Về chúng tôi</p>
+                  </a>
+                </li>
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Dịch vụ ưu đãi</p>
+                  </a>
+                </li>
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Thông tin sản phẩm</p>
+                  </a>
+                </li>
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Đội ngũ nhân viên</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="wrapper_f_grid_item">
+            <div class="wrapper_f_grid_item_content">
+              <div class="heading">
+                <h4>chính sách</h4>
+              </div>
+              <ul class="contact_list">
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Quyền riêng tư</p>
+                  </a>
+                </li>
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Sử dụng dịch vụ</p>
+                  </a>
+                </li>
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Góp ý-khiếu nại</p>
+                  </a>
+                </li>
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Nội dung trang web</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="wrapper_f_grid_item">
+            <div class="wrapper_f_grid_item_content">
+              <div class="heading">
+                <h4>hỗ trợ</h4>
+              </div>
+              <ul class="contact_list">
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Đặt hàng Online</p>
+                  </a>
+                </li>
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Đổi trả sản phẩm</p>
+                  </a>
+                </li>
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Thanh toán Online</p>
+                  </a>
+                </li>
+                <li class="contact_list_item">
+                  <a href="#" class="contact_list_item--link">
+                    <p>Bảo hành sản phẩm</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="main_footer">
+      <div class="wrapper_footer">
+        <span>© Copyright 2021 </span>
+        <p>
+          Website được phát triển bởi
+          <span style="color: #548ffd" ;> VinhTN </span>
+        </p>
+      </div>
+    </footer>
+
+    <!-- include scripts.html -->
+    <!-- boostrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+            th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"
+            th:src="@{https://unpkg.com/swiper/swiper-bundle.js}"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"
+            th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
+
+    <!-- build:js script/script.min.js -->
+    <script type="text/javascript" src="../static/js/slick.js"
+            th:src="@{/js/dashboard.js}"></script>
+    <script type="text/javascript" src="../static/js/script.js"
+            th:src="@{/js/script.js}"></script>
+    <!-- endbuild -->
+  </body>
+</html>
