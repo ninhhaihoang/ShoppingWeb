@@ -72,10 +72,10 @@ public class MainController {
     @GetMapping(value = "/products/all")
     public String getAllProducts(Principal principal, Model model) {
 
-        String userName = principal.getName();
-
-        UserEntity user = userRepository.findByUsername(userName);
-        model.addAttribute("user", user);
+//        String userName = principal.getName();
+//
+//        UserEntity user = userRepository.findByUsername(userName);
+//        model.addAttribute("user", user);
 
         List<ProductEntity> products = productService.getProducts();
 
@@ -87,10 +87,10 @@ public class MainController {
     @RequestMapping(value = "/products/{productId}", method = RequestMethod.GET)
     public String getDetailProduct(Principal principal, @PathVariable(name = "productId") Long productId, Model model) {
 
-        String userName = principal.getName();
-
-        UserEntity user = userRepository.findByUsername(userName);
-        model.addAttribute("user", user);
+//        String userName = principal.getName();
+//
+//        UserEntity user = userRepository.findByUsername(userName);
+//        model.addAttribute("user", user);
 
         ProductEntity product = productService.getProduct(productId);
 

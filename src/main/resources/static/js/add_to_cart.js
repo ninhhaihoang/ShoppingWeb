@@ -18,10 +18,10 @@ function addToCart() {
     }).done(function (response) {
         $("#modalTitle").text("Shopping Cart");
         $("#modalBody").text(response);
-        $("#modalBody").modal();
+        $("#myModal").modal();
     }).fail(function () {
         $("#modalTitle").text("Shopping Cart");
         $("#modalBody").text("Error while adding product to shopping cart.");
-        $("#modalBody").modal();
+        $("#myModal").modal();
     });
 }

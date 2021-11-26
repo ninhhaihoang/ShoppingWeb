@@ -1,6 +1,5 @@
-<html lang="vi"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
   <title>Fashion Shop</title>
@@ -26,9 +25,8 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"
     th:href="@{https://unpkg.com/aos@2.3.1/dist/aos.css}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+    th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" media="screen" href="../static/css/main.css" th:href="@{/css/main.css}" />
 </head>
@@ -42,8 +40,10 @@
         <li class="nav_list_item active"> <a th:href="@{/products/all}" class="nav_list_item--link"> Sản phẩm </a> </li>
       </ul>
       <ul class="nav_list_right" sec:authorize="isAnonymous()">
-        <li class="nav_list_right_item active"> <a th:href="@{/login_page}" class="nav_list_right_item--link"> Đăng nhập </a> </li>
-        <li class="nav_list_right_item"><a th:href="@{/register_page}"  class="nav_list_right_item--link"> Đăng kí </a> </li>
+        <li class="nav_list_right_item active"> <a th:href="@{/login_page}" class="nav_list_right_item--link"> Đăng nhập
+          </a> </li>
+        <li class="nav_list_right_item"><a th:href="@{/register_page}" class="nav_list_right_item--link"> Đăng kí </a>
+        </li>
       </ul>
       <ul class="nav_list_right" sec:authorize="isAuthenticated()">
         <li class="nav_list_right_item active">
@@ -51,7 +51,8 @@
             <span sec:authentication="name"></span>
           </a>
         </li>
-        <li class="nav_list_right_item"> <a th:href="@{/j_spring_security_logout}" class="nav_list_right_item--link"> Đăng xuất </a> </li>
+        <li class="nav_list_right_item"> <a th:href="@{/j_spring_security_logout}" class="nav_list_right_item--link">
+            Đăng xuất </a> </li>
       </ul>
     </div>
   </header>
@@ -93,13 +94,13 @@
       <table class="table_add">
         <thead>
           <tr>
-            <th> STT </th>
-            <th>Ảnh</th>
-            <th>Tên sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Đơn giá</th>
-            <th>Thành tiền</th>
-            <th>Chỉnh sửa</th>
+            <th style="text-align: center"> STT </th>
+            <th style="text-align: center">Ảnh</th>
+            <th style="text-align: center">Tên sản phẩm</th>
+            <th style="text-align: center">Số lượng</th>
+            <th style="text-align: center">Đơn giá</th>
+            <th style="text-align: center">Thành tiền</th>
+            <th style="text-align: center">Chỉnh sửa</th>
           </tr>
         </thead>
         <tbody>
@@ -108,11 +109,12 @@
               <th>[[${status.count}]]</th>
               <td class="none_padding"><img class="product_image" th:src="@{${product.mainPicPath}}" alt=""></td>
               <td>[[${product.productName}]]</td>
-              <td>
-                <div th:replace="quantity_control :: quantity_control(${item.quantity}, ${item.product.productId})"></div>
+              <td style="text-align: center; width: 140px; white-space: nowrap;">
+                <div th:replace="quantity_control :: quantity_control(${item.quantity}, ${item.product.productId})">
+                </div>
               </td>
-              <td><span>$[[${product.productPrice}]]</span></td>
-              <td><span>= [[Subtotal]]</span></td>
+              <td><span>[[${product.productPrice}]] VND</span></td>
+              <td><span class="productSubtotal">[[${item.subtotal}]] VND</span></td>
               <td>
                 <button class="btn btn_delete" type="button"> <span> Xóa </span> </button>
               </td>
@@ -122,7 +124,7 @@
         <tfoot>
           <tr>
             <td colspan="1"> TỔNG CỘNG: </td>
-            <td colspan="1"> [Total Amount] </td>
+            <td colspan="1"><span id="totalAmount"> [Total Amount] </span></td>
             <td colspan="5"> <button class="btn btn_agree" type="submit"> Xác nhận </button> </td>
           </tr>
         </tfoot>
@@ -261,27 +263,35 @@
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-          th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
-          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-          crossorigin="anonymous"></script>
+    th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-          th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"
-          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-          crossorigin="anonymous"></script>
+    th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.js"
     th:src="@{https://unpkg.com/swiper/swiper-bundle.js}"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"
     th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"
+    th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+
+  <script type="text/javascript" src="../static/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
+
+  <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+
   <!-- build:js script/script.min.js -->
   <script type="text/javascript" src="../static/js/slick.js" th:src="@{../js/slick.js}"></script>
   <script type="text/javascript" src="../static/js/script.js" th:src="@{../js/script.js}"></script>
   <script type="text/javascript" src="../static/js/quantity_control.js" th:src="@{/js/quantity_control.js}"></script>
-  <script type="text/javascript" src="../static/js/add_to_cart.js.js" th:src="@{/js/add_to_cart.js}"></script>
+  <script type="text/javascript" src="../static/js/shopping_cart.js.js" th:src="@{/js/shopping_cart.js}"></script>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" th:src="@{https://unpkg.com/aos@2.3.1/dist/aos.js}"></script>
 

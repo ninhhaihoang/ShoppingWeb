@@ -62,4 +62,9 @@ public class CartItemEntity {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Transient
+    public Long getSubtotal(){
+        return this.product.getProductPrice() * quantity;
+    }
 }

@@ -23,20 +23,37 @@ public class ShoppingCartRestController {
     public String addProductToCart(@PathVariable("pid") Long productId,
                                    @PathVariable("qty") Integer quantity,
                                    Principal principal) {
-        String userName = principal.getName();
+        try {
+            String userName = principal.getName();
 
-        System.out.println("addProductToCart: " + productId + " - " + quantity);
+            System.out.println("addProductToCart: " + productId + " - " + quantity);
 
-        if (userName == null) {
+            UserEntity user = userRepository.findByUsername(userName);
+
+            Integer addedQuantity = cartService.addProduct(productId, quantity, user);
+
+            System.out.println("item added");
+
+            return addedQuantity + "item(s) of this product were added to your shopping cart.";
+        } catch (Exception e) {
             return "You must login to add this product to  your shopping cart.";
         }
+    }
 
-        UserEntity user = userRepository.findByUsername(userName);
+    @PostMapping("/cart/update/{pid}/{qty}")
+    public String updateQuantity(@PathVariable("pid") Long productId,
+                                   @PathVariable("qty") Integer quantity,
+                                   Principal principal) {
+        try {
+            String userName = principal.getName();
 
-        Integer addedQuantity = cartService.addProduct(productId, quantity, user);
+            UserEntity user = userRepository.findByUsername(userName);
 
-        System.out.println("item added");
+            Long subtotal = cartService.updateQuantity(productId, quantity, user);
 
-        return addedQuantity + "item(s) of this product were added to your shopping cart.";
+            return String.valueOf(subtotal);
+        } catch (Exception e) {
+            return "You must login to add this product to  your shopping cart.";
+        }
     }
 }

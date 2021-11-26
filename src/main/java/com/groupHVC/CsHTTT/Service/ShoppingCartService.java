@@ -8,9 +8,11 @@ import com.groupHVC.CsHTTT.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class ShoppingCartService {
 
     @Autowired
@@ -43,5 +45,12 @@ public class ShoppingCartService {
         cartItemRepository.save(cartItem);
 
         return  addedQuantity;
+    }
+
+    public Long updateQuantity(Long productId, Integer quantity, UserEntity user ) {
+        cartItemRepository.updateQuantity(quantity, productId, user.getUserId());
+        ProductEntity product = productRepository.findById(productId).get();
+        Long subtotal = product.getProductPrice() * quantity;
+        return subtotal;
     }
 }
