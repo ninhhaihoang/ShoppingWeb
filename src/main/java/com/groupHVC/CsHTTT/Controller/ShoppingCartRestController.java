@@ -44,7 +44,7 @@ public class ShoppingCartRestController {
     public String updateQuantity(@PathVariable("pid") Long productId,
                                    @PathVariable("qty") Integer quantity,
                                    Principal principal) {
-        try {
+
             String userName = principal.getName();
 
             UserEntity user = userRepository.findByUsername(userName);
@@ -52,8 +52,20 @@ public class ShoppingCartRestController {
             Long subtotal = cartService.updateQuantity(productId, quantity, user);
 
             return String.valueOf(subtotal);
-        } catch (Exception e) {
-            return "You must login to add this product to  your shopping cart.";
-        }
+
+    }
+
+    @PostMapping("/cart/remove/{pid}")
+    public String removeProduct(@PathVariable("pid") Long productId,
+                                 Principal principal) {
+
+        String userName = principal.getName();
+
+        UserEntity user = userRepository.findByUsername(userName);
+
+        cartService.removeProduct(productId, user);
+
+        return "The product has been removed from your shopping cart.";
+
     }
 }

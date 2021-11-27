@@ -53,4 +53,8 @@ public class ShoppingCartService {
         Long subtotal = product.getProductPrice() * quantity;
         return subtotal;
     }
+
+    public void removeProduct(Long productId, UserEntity user) {
+        cartItemRepository.deleteByUserAndProduct(user.getUserId(), productId);
+    }
 }

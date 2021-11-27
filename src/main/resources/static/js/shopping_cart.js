@@ -9,12 +9,22 @@ $(document).ready(function () {
 
     $(".plusButton").on("click", function(evt) {
         evt.preventDefault();
-        increseQuantity($(this));
+        increaseQuantity($(this));
+    });
+
+    $(".link-remove").on("click", function (evt) {
+        evt.preventDefault();
+        removeFromCart($(this));
+    })
+
+    $(".btn-danger").on("click", function (evt) {
+        evt.preventDefault();
+        location.reload();
     });
 });
 
 function decreaseQuantity(link) {
-        productId = $(this).attr("pid");
+        productId = link.attr("pid");
         qtyInput = $("#quantity" + productId);
 
         newQty = parseInt(qtyInput.val()) - 1;
@@ -24,8 +34,8 @@ function decreaseQuantity(link) {
         }
 }
 
-function increseQuantity(link) {
-    productId = $(this).attr("pid");
+function increaseQuantity(link) {
+    productId = link.attr("pid");
     qtyInput = $("#quantity" + productId);
 
     newQty = parseInt(qtyInput.val()) + 1;
@@ -45,7 +55,7 @@ function updateQuantity(productId, quantity) {
             xhr.setRequestHeader(crsfHeaderName, csrfValue);
         }
     }).done(function (newSubtotal) {
-        updateSubtotal();
+        updateSubtotal(newSubtotal, productId);
         updateTotal();
     }).fail(function () {
         $("#modalTitle").text("Shopping Cart");
@@ -54,8 +64,8 @@ function updateQuantity(productId, quantity) {
     });
 }
 
-function updateSubtotal(){
-
+function updateSubtotal(newSubtotal, productId){
+    $("#subtotal" + productId).text(newSubtotal);
 }
 
 function updateTotal() {
@@ -66,5 +76,39 @@ function updateTotal() {
     });
 
     $("#totalAmount").text(total + " VND");
+}
+
+function removeFromCart(link) {
+    url = link.attr("href");
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader(crsfHeaderName, csrfValue);
+        }
+    }).done(function (response) {
+        $("#modalTitle").text("Shopping Cart");
+        if (response.includes("removed")) {
+            $("#myModal").on("hide.bs.modal", function (e){
+               rowNumber = link.attr("rowNumber");
+               removeProduct(rowNumber);
+               updateTotal();
+            });
+        }
+
+        $("#modalBody").text(response);
+        $("#myModal").modal();
+
+    }).fail(function () {
+        $("#modalTitle").text("Shopping Cart");
+        $("#modalBody").text("Error while adding product to shopping cart.");
+        $("#myModal").modal();
+    });
+}
+
+function removeProduct(rowNumber) {
+    rowId = "row" + rowNumber;
+    $("#" + rowId).remove()
 }
 
