@@ -112,3 +112,4 @@ function removeProduct(rowNumber) {
     $("#" + rowId).remove()
 }
 
+

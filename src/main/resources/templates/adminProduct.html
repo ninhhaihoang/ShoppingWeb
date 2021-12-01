@@ -71,7 +71,7 @@
                   Customers
                 </a>
               </li>
-              <li class="sider-item">
+              <li class="sider-item" th:href="@{/admin/orders}">
                 <a class="nav-link">
                   <i class="far fa-file nav-icon"></i>
                   Orders
@@ -96,27 +96,20 @@
                   <th scope="col" style="text-align: center">Tên sản phẩm</th>
                   <th scope="col" style="text-align: center">Giá</th>
                   <th scope="col" style="text-align: center">Số lượng</th>
-                  <th style="text-align: center"><a class="btn btn-primary" th:href="@{/admin/pageaddProduct}">Thêm</a></th>
+                  <th style="text-align: center"><a class="btn btn-primary" th:href="@{/admin/page_addProduct}">Thêm</a></th>
                 </tr>
               </thead>
               <tbody>
               <div th:each="p:${products}">
                 <tr>
-                  <td rowspan="2" class="fitwidth">
+                  <td class="fitwidth">
                     <img th:src="@{${p.mainPicPath}}" style="width: 150px; height: 150px">
                   </td>
                   <td th:text="${p.productName}"></td>
-                  <td th:text="${p.productDescription}"></td>
                   <td th:text="${p.productPrice}"></td>
                   <td th:text="${p.quantity}"></td>
-                  <td>&ensp;</td>
-                </tr>
-                <tr>
-                  <td><a href="#" class="btn btn-outline-primary">Chỉnh sửa</a></td>
-                  <td><a href="#" class="btn btn-outline-primary">Chỉnh sửa</a></td>
-                  <td><a href="#" class="btn btn-outline-primary">Chỉnh sửa</a></td>
-                  <td><a href="#" class="btn btn-outline-primary">Chỉnh sửa</a>></td>
                   <td class="fitwidth">
+<!--                    <a th:href="@{'/admin/products/' + ${p.productId}}" class="btn btn-outline-primary">Chỉnh sửa</a>-->
                     <a th:href="@{'/admin/deleteProduct/' + ${p.productId}}" methods="post" class="btn btn-danger">Xóa</a>
                   </td>
                 </tr>

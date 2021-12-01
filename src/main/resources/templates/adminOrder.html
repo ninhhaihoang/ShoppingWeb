@@ -71,18 +71,18 @@
           <div class="position-sticky pt-3">
             <ul class="nav flex-column sider-list">
               <li class="sider-item">
-                <a class="nav-link">
+                <a class="nav-link" th:href="@{/admin/home}">
                   <i class="fas fa-user-friends nav-icon"></i>
                   Customers
                 </a>
               </li>
-              <li class="sider-item active">
+              <li class="sider-item active" th:href="@{/admin/orders}">
                 <a class="nav-link">
                   <i class="far fa-file nav-icon"></i>
                   Orders
                 </a>
               </li>
-              <li class="sider-item">
+              <li class="sider-item" th:href="@{/admin/products}">
                 <a class="nav-link">
                   <i class="fas fa-shopping-cart nav-icon"></i>
                   Products
@@ -94,16 +94,34 @@
 
         <div class="col-lg-10 d-md-block">
           <div class="table-responsive table-content">
-            <table class="table table-striped table-sm table-item active">
-              <thead>
+            <table class="table table-bordered active">
+              <thead class="thead-dark">
                 <tr>
-                  <th scope="col">Mã hóa đơn</th>
-                  <th scope="col">User</th>
-                  <th scope="col">Tổng tiền</th>
-                  <th scope="col">Tình trạng</th>
+                  <th scope="col"style="text-align: center">User</th>
+                  <th scope="col"style="text-align: center">Ảnh</th>
+                  <th scope="col"style="text-align: center">Tên sản phẩm</th>
+                  <th scope="col"style="text-align: center">Số lượng</th>
+                  <th scope="col"style="text-align: center">Tổng tiền</th>
+                  <th scope="col"style="text-align: center">Tình trạng</th>
+                  <th>&nbsp;</th>
                 </tr>
               </thead>
-              <tbody class="order"></tbody>
+              <tbody>
+              <tr th:each="o:${orders}">
+                  <th th:text="${o.user.username}"></th>
+                  <td>
+                    <img class="product_image" th:src="@{${o.product.mainPicPath}}" alt="" style="width: 150px; height: 150px">
+                  </td>
+                  <td th:text="${o.product.productName}"></td>
+                  <td style="text-align: center; width: 140px; white-space: nowrap;">
+                    <span th:text="${o.quantity}"></span>
+                  </td>
+                  <td><span th:id="'subtotal' + ${o.product.productId}"
+                            class="productSubtotal">[[${o.subtotal}]]</span><span> VND</span></td>
+                  <td><span th:text="${o.status.getStatus()}"></span></td>
+                  <td><a th:href="@{'/admin/orders/' + ${o.id}}" class="btn btn-outline-primary">Chỉnh sửa</a></td>
+              </tr>
+              </tbody>
             </table>
           </div>
         </div>

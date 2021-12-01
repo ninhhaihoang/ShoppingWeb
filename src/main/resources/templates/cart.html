@@ -51,6 +51,7 @@
             <span sec:authentication="name"></span>
           </a>
         </li>
+        <li class="nav_list_right_item"><a th:href="@{/history}" class="nav_list_right_item--link">Lịch sử</a></li>
         <li class="nav_list_right_item"> <a th:href="@{/j_spring_security_logout}" class="nav_list_right_item--link">
             Đăng xuất </a> </li>
       </ul>
@@ -74,12 +75,14 @@
           <li class="trending_list_item"><a href="#" class="trending_list_item--link">&nbsp; </a></li>
         </ul>
         <div class="comboBox">
-          <div class="search_form">
-            <input id="input_search" type="text" placeholder="Tìm kiếm...">
-            <button class="btn btn_search">
-              <img src="../static/images/icons/loupe.png" th:src="@{/images/icons/loupe.png}" alt="">
-            </button>
-          </div>
+          <form th:action="@{/products/search}">
+            <div class="search_form">
+              <input id="input_search" type="text" name="keyword" th:value="${keyword}" placeholder="Tìm kiếm..." required />
+              <button class="btn btn_search" type="submit">
+                <img src="../static/images/icons/loupe.png" th:src="@{/images/icons/loupe.png}" alt="">
+              </button>
+            </div>
+          </form>
           <div class="buy">
             <a th:href="@{/cart}" class="control_buy">
               <img src="../static/images/icons/buy.png" th:src="@{/images/icons/buy.png}" alt="">
@@ -131,7 +134,7 @@
           <tr>
             <td colspan="1"> TỔNG CỘNG: </td>
             <td colspan="1"><span id="totalAmount"> [Total Amount] </span></td>
-            <td colspan="5"> <button class="btn btn_agree" type="submit"> Xác nhận </button> </td>
+            <td colspan="5"> <a class="btn btn_agree" onclick="alert('Xác nhận đơn hàng')" th:href="@{/confirmCartItem}"> Xác nhận </a> </td>
           </tr>
         </tfoot>
       </table>

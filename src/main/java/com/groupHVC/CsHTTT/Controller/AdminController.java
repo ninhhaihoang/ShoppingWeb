@@ -1,12 +1,8 @@
 package com.groupHVC.CsHTTT.Controller;
 
-import com.groupHVC.CsHTTT.Model.CategoryEntity;
-import com.groupHVC.CsHTTT.Model.ProductEntity;
-import com.groupHVC.CsHTTT.Model.UserEntity;
+import com.groupHVC.CsHTTT.Model.*;
 import com.groupHVC.CsHTTT.Repository.ProductRepository;
-import com.groupHVC.CsHTTT.Service.CategoryService;
-import com.groupHVC.CsHTTT.Service.ProductService;
-import com.groupHVC.CsHTTT.Service.UserService;
+import com.groupHVC.CsHTTT.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +33,12 @@ public class AdminController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private ShoppingCartService cartService;
+
+    @Autowired
+    private OrderStatusService statusService;
+
     @GetMapping(value = "/admin/home")
     public String adminPage(Model model) {
 
@@ -45,6 +47,13 @@ public class AdminController {
         model.addAttribute("users", users);
 
         return "adminUser";
+    }
+
+    @RequestMapping(value = "/admin/deleteUser/{userId}", method = RequestMethod.GET)
+    public String processDeleteUser(@PathVariable(name = "userId") Long userId) {
+
+        userService.deleteById(userId);
+        return "redirect:/admin/home";
     }
 
     @GetMapping(value = "/admin/products")
@@ -105,10 +114,47 @@ public class AdminController {
         return "adminProductModify";
     }
 
+    @PostMapping("/admin/process_modifyProduct")
+    public String processModifyProduct(@ModelAttribute(name = "product") ProductEntity product){
+
+
+        productService.updateProduct(product);
+
+        return "redirect:/admin/products";
+    }
+
     @RequestMapping(value = "/admin/deleteProduct/{productId}", method = RequestMethod.GET)
     public String processDeleteProduct(@PathVariable(name = "productId") Long productId) {
 
         productService.deleteById(productId);
         return "redirect:/admin/products";
+    }
+
+    @GetMapping(value = "/admin/orders")
+    public String adminOrders(Model model) {
+
+        List<CartItemEntity> orders = cartService.listOrder();
+
+        model.addAttribute("orders", orders);
+
+        return "adminOrder";
+    }
+
+    @RequestMapping(value = "/admin/orders/{orderId}", method = RequestMethod.GET)
+    public String pageUpdateOrder(@PathVariable(name = "orderId") Long orderId, Model model) {
+
+        CartItemEntity order = cartService.cartItem(orderId);
+
+        List<OrderStatusEntity> stat = statusService.getAllStatus();
+        model.addAttribute("order", order);
+        model.addAttribute("stat", stat);
+        return "adminDetailOrder";
+    }
+
+    @RequestMapping(value = "/admin/updateOrder", method = RequestMethod.POST)
+    public String processUpdateItem(@ModelAttribute(name = "order") CartItemEntity cartItem) {
+
+        cartService.updateOrder(cartItem);
+        return "redirect:/admin/orders";
     }
 }

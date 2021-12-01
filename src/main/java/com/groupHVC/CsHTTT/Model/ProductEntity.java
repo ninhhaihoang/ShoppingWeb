@@ -25,29 +25,21 @@ public class ProductEntity {
     @Column(name = "MAIN_PICTURE", nullable = false)
     private String mainPicture;
 
-    @Column(name = "PICTURE1")
-    private String picture1;
-
-    @Column(name = "PICTURE2")
-    private String picture2;
-
-    @Column(name = "PICTURE3")
-    private String picture3;
+    @Column(name = "SIZE")
+    private String size;
 
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
     private CategoryEntity category;
 
-    public ProductEntity(Long productId, String productName, Long productPrice, int quantity, String productDescription, String mainPicture, String picture1, String picture2, String picture3, CategoryEntity category) {
+    public ProductEntity(Long productId, String productName, Long productPrice, int quantity, String productDescription, String mainPicture, String size, CategoryEntity category) {
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
         this.quantity = quantity;
         this.productDescription = productDescription;
         this.mainPicture = mainPicture;
-        this.picture1 = picture1;
-        this.picture2 = picture2;
-        this.picture3 = picture3;
+        this.size = size;
         this.category = category;
     }
 
@@ -109,28 +101,12 @@ public class ProductEntity {
         return "/product-mainPicture/" + productId + "/" + mainPicture;
     }
 
-    public String getPicture1() {
-        return picture1;
+    public String getSize() {
+        return size;
     }
 
-    public void setPicture1(String picture1) {
-        this.picture1 = picture1;
-    }
-
-    public String getPicture2() {
-        return picture2;
-    }
-
-    public void setPicture2(String picture2) {
-        this.picture2 = picture2;
-    }
-
-    public String getPicture3() {
-        return picture3;
-    }
-
-    public void setPicture3(String picture3) {
-        this.picture3 = picture3;
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public CategoryEntity getCategory() {

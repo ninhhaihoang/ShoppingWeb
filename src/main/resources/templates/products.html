@@ -50,6 +50,7 @@
                     <span sec:authentication="name"></span>
                 </a>
             </li>
+            <li class="nav_list_right_item"><a th:href="@{/history}" class="nav_list_right_item--link">Lịch sử</a></li>
             <li class="nav_list_right_item"> <a th:href="@{/j_spring_security_logout}" class="nav_list_right_item--link"> Đăng xuất </a> </li>
         </ul>
     </div>
@@ -70,12 +71,14 @@
                 <li class="trending_list_item"><a href="#" class="trending_list_item--link"> Áo thun </a></li>
             </ul>
             <div class="comboBox">
-                <div class="search_form">
-                    <input id="input_search" type="text" placeholder="Tìm kiếm...">
-                    <button class="btn btn_search">
-                        <img src="../static/images/icons/loupe.png" th:src="@{/images/icons/loupe.png}" alt="">
-                    </button>
-                </div>
+                <form th:action="@{/products/search}">
+                    <div class="search_form">
+                        <input id="input_search" type="text" name="keyword" th:value="${keyword}" placeholder="Tìm kiếm..." required />
+                        <button class="btn btn_search" type="submit">
+                            <img src="../static/images/icons/loupe.png" th:src="@{/images/icons/loupe.png}" alt="">
+                        </button>
+                    </div>
+                </form>
                 <div class="buy">
                     <a th:href="@{/cart}" class="control_buy">
                         <img src="../static/images/icons/buy.png"  th:src="@{/images/icons/buy.png}" alt="">
@@ -121,9 +124,7 @@
                         <input type="checkbox" id="show-List1">
                         <label for="show-List1"> Áo</label>
                         <ul class="more_list">
-                            <li><a href="#">ST about Áo  </a></li>
-                            <li><a href="#">ST about Áo  </a></li>
-                            <li><a href="#">ST about Áo  </a></li>
+                            <li><a th:href="@{/products/ao}">Street Wear</a></li>
                         </ul>
                     </li>
                     <li class="dropdown_menu_item">
@@ -131,16 +132,14 @@
                         <input type="checkbox" id="show-List2">
                         <label for="show-List2"> Quần</label>
                         <ul class="more_list">
-                            <li><a href="#"> ST about Quần </a></li>
-                            <li><a href="#"> ST about Quần </a></li>
-                            <li><a href="#"> ST about Quần </a></li>
+                            <li><a th:href="@{/products/quan}">Quần</a></li>
                         </ul>
                     </li>
                     <li class="dropdown_menu_item">
                         <a href="#" class="dropdown_menu_item--link "> Sản phẩm nổi bật </a>
                     </li>
                     <li class="dropdown_menu_item">
-                        <a href="#" class="dropdown_menu_item--link "> Sản phẩm mới </a>
+                        <a th:href="@{/products/new}" class="dropdown_menu_item--link "> Sản phẩm mới </a>
                     </li>
                 </ul>
             </div>

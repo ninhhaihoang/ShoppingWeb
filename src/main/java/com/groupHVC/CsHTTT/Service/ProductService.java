@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -16,6 +15,25 @@ public class ProductService {
 
     public List<ProductEntity> getProducts() {
        return productRepository.findAll();
+    }
+
+    public List<ProductEntity> getNewProducts() {
+        return productRepository.findNewProduct();
+    }
+
+    public List<ProductEntity> getSuggest() {
+        return productRepository.suggestProduct();
+    }
+
+    public List<ProductEntity> getSearch(String keyword) {
+        if (keyword != null) {
+            return productRepository.searchProduct(keyword);
+        }
+        return productRepository.findAll();
+    }
+
+    public List<ProductEntity> getIndexProducts() {
+        return productRepository.newProduct();
     }
 
     public ProductEntity getProduct(Long id) {
@@ -32,5 +50,11 @@ public class ProductService {
 
     public void deleteById(Long id) {
         productRepository.deleteById(id);
+    }
+
+    public void updateProduct(ProductEntity product) {
+        productRepository.updateProduct(product.getProductName(), product.getQuantity(),
+                product.getCategory().getCategoryId(), product.getProductDescription(), product.getProductPrice(),
+                product.getProductId());
     }
 }

@@ -52,7 +52,7 @@
               </a>
             </li>
             <li class="sider-item">
-              <a class="nav-link">
+              <a class="nav-link" th:href="@{/admin/orders}">
                 <i class="far fa-file nav-icon"></i>
                 Orders
               </a>
@@ -82,8 +82,8 @@
                 <td th:text="${u.username}"></td>
                 <td th:text="${u.fullName}"></td>
                 <td th:text="${u.phoneNumber}"></td>
-                <td><button type="button" class="btn btn-outline-primary">Chỉnh sửa</button>
-                  <button type="button" class="btn btn-outline-danger">Xóa</button>
+                <td>
+                  <a type="button" class="btn btn-outline-danger" th:href="@{'/admin/deleteUser/'+${u.userId}}">Xóa</a>
                 </td>
               </tr>
             </tbody>

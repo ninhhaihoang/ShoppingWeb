@@ -1,9 +1,13 @@
 package com.groupHVC.CsHTTT.Controller;
 
+import com.groupHVC.CsHTTT.Model.OrderStatusEntity;
 import com.groupHVC.CsHTTT.Model.UserEntity;
 import com.groupHVC.CsHTTT.Repository.UserRepository;
+import com.groupHVC.CsHTTT.Service.OrderStatusService;
 import com.groupHVC.CsHTTT.Service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +23,9 @@ public class ShoppingCartRestController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private OrderStatusService statusService;
+
     @PostMapping("/cart/add/{pid}/{qty}")
     public String addProductToCart(@PathVariable("pid") Long productId,
                                    @PathVariable("qty") Integer quantity,
@@ -30,7 +37,9 @@ public class ShoppingCartRestController {
 
             UserEntity user = userRepository.findByUsername(userName);
 
-            Integer addedQuantity = cartService.addProduct(productId, quantity, user);
+            OrderStatusEntity status = statusService.getStatus(1);
+
+            Integer addedQuantity = cartService.addProduct(productId, quantity, user, status);
 
             System.out.println("item added");
 
@@ -68,4 +77,5 @@ public class ShoppingCartRestController {
         return "The product has been removed from your shopping cart.";
 
     }
+
 }

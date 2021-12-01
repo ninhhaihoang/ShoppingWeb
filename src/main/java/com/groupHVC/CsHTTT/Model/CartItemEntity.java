@@ -1,5 +1,7 @@
 package com.groupHVC.CsHTTT.Model;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,11 +23,17 @@ public class CartItemEntity {
     @Column(name = "QUANTITY")
     private int quantity;
 
-    public CartItemEntity(Long id, ProductEntity product, UserEntity user, int quantity) {
+    @ManyToOne
+    @JoinColumn(name = "STATUS_ID", columnDefinition = "int default 1")
+    private OrderStatusEntity status;
+
+
+    public CartItemEntity(Long id, ProductEntity product, UserEntity user, int quantity, OrderStatusEntity status) {
         this.id = id;
         this.product = product;
         this.user = user;
         this.quantity = quantity;
+        this.status = status;
     }
 
     public CartItemEntity() {
@@ -61,6 +69,14 @@ public class CartItemEntity {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public OrderStatusEntity getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatusEntity status) {
+        this.status = status;
     }
 
     @Transient

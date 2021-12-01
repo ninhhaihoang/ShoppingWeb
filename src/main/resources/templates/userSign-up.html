@@ -40,9 +40,9 @@
     <header class="main_header">
       <div class="container_header">
         <ul class="nav_list" id="nav_active">
-          <li class="nav_list_item active"> <a href="../index.html" class="nav_list_item--link"> Trang chủ </a> </li> <!-- warn! -->
+          <li class="nav_list_item active"> <a th:href="@{/}" class="nav_list_item--link"> Trang chủ </a> </li> <!-- warn! -->
           <li class="nav_list_item"><a href="#"  class="nav_list_item--link"> Giới thiệu </a> </li>
-          <li class="nav_list_item"> <a href="#" class="nav_list_item--link"> Sản phẩm </a> </li>
+          <li class="nav_list_item"> <a th:href="@{/products/all}" class="nav_list_item--link"> Sản phẩm </a> </li>
         </ul>
         <ul class="nav_list_right" >
           <li class="nav_list_right_item active"> <a th:href="@{/login_page}" class="nav_list_right_item--link"> Đăng nhập </a> </li>
